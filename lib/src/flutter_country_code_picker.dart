@@ -1,3 +1,5 @@
+import 'dart:ui' show window;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_country_code_picker/src/country/country.dart';
 import 'package:flutter_country_code_picker/src/dialog/country_code_picker_dialog.dart';
@@ -58,7 +60,7 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
 
   /// A function to show [CountryCodePickerDialog]
   Future<void> _changeCountry() async {
-    final mediaQuery = MediaQuery.of(context);
+    final mediaQuery = MediaQueryData.fromWindow(window);
     final margin = mediaQuery.viewPadding;
     final height = mediaQuery.size.height;
 
