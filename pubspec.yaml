@@ -1,10 +1,12 @@
-name: country_code_picker
+name: flutter_country_code_picker
 description: A Very Good Project created by Very Good CLI.
+homepage: https://github.com/farhanfadila1717/country_code_picker
+repository: https://github.com/farhanfadila1717/country_code_picker
 version: 0.0.1
 
 environment:
   sdk: ">=2.18.0 <3.0.0"
-  flutter: 3.3.7
+  flutter: ">=1.17.0"
 
 dependencies:
   flutter:

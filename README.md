@@ -10,11 +10,11 @@ A Very Good Project created by Very Good CLI.
 
 **❗ In order to start using Country Code Picker you must have the [Flutter SDK][flutter_install_link] installed on your machine.**
 
-Add `country_code_picker` to your `pubspec.yaml`:
+Add `flutter_country_code_picker` to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  country_code_picker:
+  flutter_country_code_picker:
 ```
 
 Install it:

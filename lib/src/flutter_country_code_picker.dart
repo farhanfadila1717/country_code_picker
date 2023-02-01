@@ -1,6 +1,7 @@
-import 'package:country_code_picker/country_code_picker.dart';
-import 'package:country_code_picker/src/dialog/country_code_picker_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_country_code_picker/src/country/country.dart';
+import 'package:flutter_country_code_picker/src/dialog/country_code_picker_dialog.dart';
+import 'package:flutter_country_code_picker/src/utils/country_code_picker_title.dart';
 
 /// {@template country_code_builder}
 /// Create custom widget build for represent [CountryCodePicker]
@@ -9,11 +10,11 @@ import 'package:flutter/material.dart';
 /// {@endtemplate}
 typedef CountyCodeBuilder = Widget Function(Country, VoidCallback);
 
-/// {@template country_code_picker}
+/// {@template flutter_country_code_picker}
 /// [CountryCodePicker] is widget for pick
 /// {@endtemplate}
 class CountryCodePicker extends StatefulWidget {
-  /// {@macro country_code_picker}
+  /// {@macro flutter_country_code_picker}
   const CountryCodePicker({
     super.key,
     required this.initialCountryCode,

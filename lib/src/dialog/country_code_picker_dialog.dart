@@ -1,15 +1,16 @@
-import 'package:country_code_picker/country_code_picker.dart';
-import 'package:country_code_picker/src/utils/debouncer.dart';
-import 'package:country_code_picker/src/widgets/country_section.dart';
-import 'package:country_code_picker/src/widgets/top.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_country_code_picker/src/country/country.dart';
+import 'package:flutter_country_code_picker/src/utils/country_code_picker_title.dart';
+import 'package:flutter_country_code_picker/src/utils/debouncer.dart';
+import 'package:flutter_country_code_picker/src/widgets/country_section.dart';
+import 'package:flutter_country_code_picker/src/widgets/top.dart';
 
-/// {@template country_code_picker_dialog}
+/// {@template flutter_country_code_picker_dialog}
 /// A widget to display dialog a list of country codes and allow the user
 /// to select one.
 /// {@endtemplate}
 class CountryCodePickerDialog extends StatefulWidget {
-  /// {@macro country_code_picker_dialog}
+  /// {@macro flutter_country_code_picker_dialog}
   const CountryCodePickerDialog({
     super.key,
     required this.favoriteCountriesCode,

@@ -1,5 +1,5 @@
-import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_country_code_picker/src/country/country.dart';
 
 /// {@template country_section}
 /// A [StatelessWidget] that displays a section for selecting a country.

@@ -1,5 +1,5 @@
 /// A Very Good Project created by Very Good CLI.
-library country_code_picker;
+library flutter_country_code_picker;
 
 export 'src/country/country.dart';
 export 'src/country_code_picker.dart';

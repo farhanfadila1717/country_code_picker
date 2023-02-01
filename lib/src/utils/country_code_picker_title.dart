@@ -1,8 +1,8 @@
-/// {@template country_code_picker_title}
+/// {@template flutter_country_code_picker_title}
 /// A class that represents the title of the country code picker.
 /// {@endtemplate}
 class ContryCodePickerTitle {
-  /// {@macro country_code_picker_title}
+  /// {@macro flutter_country_code_picker_title}
   const ContryCodePickerTitle({
     required this.tooltip,
     required this.favoriteCountriesSection,

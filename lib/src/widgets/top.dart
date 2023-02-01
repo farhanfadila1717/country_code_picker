@@ -1,6 +1,6 @@
-import 'package:country_code_picker/src/utils/country_code_picker_title.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_country_code_picker/src/utils/country_code_picker_title.dart';
 
 /// {@template top}
 /// [Top] section of dialog widget
