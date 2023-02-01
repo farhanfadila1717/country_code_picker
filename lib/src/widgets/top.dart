@@ -49,55 +49,50 @@ class _TopState extends State<Top> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return ClipRRect(
-      borderRadius: const BorderRadius.vertical(
-        top: Radius.circular(20),
-      ),
-      child: ColoredBox(
-        color: theme.scaffoldBackgroundColor,
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Center(
-                child: SizedBox(
-                  width: 40,
-                  height: 2,
-                  child: DecoratedBox(
-                    decoration: BoxDecoration(
-                      color: Color(0xFFC2C2C2),
-                    ),
+    return ColoredBox(
+      color: theme.scaffoldBackgroundColor,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Center(
+              child: SizedBox(
+                width: 40,
+                height: 2,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: Color(0xFFC2C2C2),
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                child: Text(
-                  widget.contryCodePickerTitle.searchFieldTitle,
-                  style: const TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.w800,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20),
+              child: Text(
+                widget.contryCodePickerTitle.searchFieldTitle,
+                style: const TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+            ),
+            TextField(
+              controller: _controller,
+              onChanged: widget.onSearch,
+              decoration: InputDecoration(
+                fillColor: const Color(0xFFC2C2C2),
+                prefixIcon: const Icon(CupertinoIcons.search, size: 20),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 30),
+                hintText: widget.contryCodePickerTitle.searchFieldHint,
+                border: const OutlineInputBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(30),
                   ),
                 ),
               ),
-              TextField(
-                controller: _controller,
-                onChanged: widget.onSearch,
-                decoration: InputDecoration(
-                  fillColor: const Color(0xFFC2C2C2),
-                  prefixIcon: const Icon(CupertinoIcons.search, size: 20),
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 30),
-                  hintText: widget.contryCodePickerTitle.searchFieldHint,
-                  border: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(30),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
