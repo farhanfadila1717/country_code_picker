@@ -31,6 +31,7 @@ class CountrySection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     if (countries == null) return const SizedBox.shrink();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,6 +50,7 @@ class CountrySection extends StatelessWidget {
         ...List.generate(countries!.length, (index) {
           final item = countries!.elementAt(index);
           return ListTile(
+            tileColor: theme.scaffoldBackgroundColor,
             contentPadding: const EdgeInsets.symmetric(horizontal: 20),
             shape: const Border(
               bottom: BorderSide(
