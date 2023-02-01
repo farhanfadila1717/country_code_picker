@@ -2,5 +2,5 @@
 library flutter_country_code_picker;
 
 export 'src/country/country.dart';
-export 'src/country_code_picker.dart';
+export 'src/flutter_country_code_picker.dart';
 export 'src/utils/country_code_picker_title.dart';
