@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_country_code_picker/src/country/country.dart';
+import 'package:flutter_country_code_picker/src/widgets/country_card.dart';
 
 /// {@template country_section}
 /// A [StatelessWidget] that displays a section for selecting a country.
@@ -31,57 +32,26 @@ class CountrySection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     if (countries == null) return const SizedBox.shrink();
-    return ColoredBox(
-      color: theme.scaffoldBackgroundColor,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          if (label != null)
-            Padding(
-              padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
-              child: Text(
-                label!,
-                style: const TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 13,
-                ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        if (label != null)
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
+            child: Text(
+              label!,
+              style: const TextStyle(
+                fontWeight: FontWeight.w600,
+                fontSize: 13,
               ),
             ),
-          ...List.generate(countries!.length, (index) {
-            final item = countries!.elementAt(index);
-            return ListTile(
-              tileColor: theme.scaffoldBackgroundColor,
-              contentPadding: const EdgeInsets.symmetric(horizontal: 20),
-              shape: const Border(
-                bottom: BorderSide(
-                  color: Color(0x3DC2C2C2),
-                ),
-              ),
-              title: Row(
-                children: [
-                  Text(item.flag),
-                  const SizedBox(width: 16),
-                  Expanded(
-                    child: Text(
-                      item.name,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-              trailing: Text('+${item.dialCode}'),
-              onTap: () {
-                Navigator.pop(context);
-                onChanged(item);
-              },
-            );
-          })
-        ],
-      ),
+          ),
+        ...List.generate(countries!.length, (index) {
+          final item = countries!.elementAt(index);
+          return CountryCard(item: item, onChanged: onChanged);
+        })
+      ],
     );
   }
 }
