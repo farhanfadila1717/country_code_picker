@@ -60,62 +60,68 @@ class _CountryCodePickerDialogState extends State<CountryCodePickerDialog> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return SizedBox.expand(
       child: ClipRRect(
+        clipBehavior: Clip.hardEdge,
         borderRadius: const BorderRadius.vertical(
           top: Radius.circular(20),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Top(
-              contryCodePickerTitle: widget.contryCodePickerTitle,
-              onSearch: (query) => _debouncer.call(() {
-                if (query.isEmpty) {
-                  _searchedCountries = null;
-                } else {
-                  _searchedCountries = countries.where(
-                    (e) =>
-                        e.code.contains(query) ||
-                        e.dialCode.contains(query) ||
-                        e.name.toLowerCase().contains(query.toLowerCase()),
-                  );
-                }
+        child: ColoredBox(
+          color: theme.scaffoldBackgroundColor,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Top(
+                contryCodePickerTitle: widget.contryCodePickerTitle,
+                onSearch: (query) => _debouncer.call(() {
+                  if (query.isEmpty) {
+                    _searchedCountries = null;
+                  } else {
+                    _searchedCountries = countries.where(
+                      (e) =>
+                          e.code.contains(query) ||
+                          e.dialCode.contains(query) ||
+                          e.name.toLowerCase().contains(query.toLowerCase()),
+                    );
+                  }
 
-                if (mounted) setState(() {});
-              }),
-            ),
-            Expanded(
-              child: Scrollbar(
-                controller: _controller,
-                child: ListView(
+                  if (mounted) setState(() {});
+                }),
+              ),
+              Expanded(
+                child: Scrollbar(
                   controller: _controller,
-                  children: [
-                    if (_searchedCountries == null) ...[
-                      CountrySection(
-                        label: widget
-                            .contryCodePickerTitle.favoriteCountriesSection,
-                        countries: _favoriteCountries,
-                        onChanged: widget.onChanged,
-                      ),
-                      const SizedBox(height: 20),
-                      CountrySection(
-                        label: widget.contryCodePickerTitle.allCountriesSection,
-                        countries: countries,
-                        onChanged: widget.onChanged,
-                      ),
-                    ] else
-                      CountrySection(
-                        label: widget
-                            .contryCodePickerTitle.searchedCountriesSection,
-                        countries: _searchedCountries,
-                        onChanged: widget.onChanged,
-                      ),
-                  ],
+                  child: ListView(
+                    controller: _controller,
+                    children: [
+                      if (_searchedCountries == null) ...[
+                        CountrySection(
+                          label: widget
+                              .contryCodePickerTitle.favoriteCountriesSection,
+                          countries: _favoriteCountries,
+                          onChanged: widget.onChanged,
+                        ),
+                        const SizedBox(height: 20),
+                        CountrySection(
+                          label:
+                              widget.contryCodePickerTitle.allCountriesSection,
+                          countries: countries,
+                          onChanged: widget.onChanged,
+                        ),
+                      ] else
+                        CountrySection(
+                          label: widget
+                              .contryCodePickerTitle.searchedCountriesSection,
+                          countries: _searchedCountries,
+                          onChanged: widget.onChanged,
+                        ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
