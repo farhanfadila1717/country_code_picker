@@ -71,6 +71,7 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
         // screen height - top height safearea
         maxHeight: height - margin.top,
       ),
+      clipBehavior: Clip.hardEdge,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(16),
@@ -100,11 +101,13 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
     } else {
       /// Default widget for [CountryCodePicker]
       return Material(
+        type: MaterialType.transparency,
         child: Tooltip(
           message: widget.contryCodePickerTitle.tooltip,
           child: InkWell(
             onTap: _changeCountry,
             child: Row(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
                   _selectedCountry.flag,
