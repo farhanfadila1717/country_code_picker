@@ -1,5 +1,3 @@
-import 'dart:ui' show window;
-
 import 'package:flutter/material.dart';
 import 'package:flutter_country_code_picker/src/country/country.dart';
 import 'package:flutter_country_code_picker/src/dialog/country_code_picker_dialog.dart';
@@ -24,6 +22,7 @@ class CountryCodePicker extends StatefulWidget {
     this.favoriteCountriesCode,
     this.onChanged,
     this.contryCodePickerTitle = ContryCodePickerTitle.id,
+    this.responsiveDialog = false,
   });
 
   /// Initial selected [Country]
@@ -41,6 +40,9 @@ class CountryCodePicker extends StatefulWidget {
 
   /// Localization for [CountryCodePicker]
   final ContryCodePickerTitle contryCodePickerTitle;
+
+  /// Return dialog instead sheet
+  final bool responsiveDialog;
 
   @override
   State<CountryCodePicker> createState() => _CountryCodePickerState();
@@ -60,29 +62,51 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
 
   /// A function to show [CountryCodePickerDialog]
   Future<void> _changeCountry() async {
-    final mediaQuery = MediaQueryData.fromWindow(window);
+    final mediaQuery = MediaQueryData.fromView(
+      WidgetsBinding.instance.platformDispatcher.views.single,
+    );
+
     final margin = mediaQuery.viewPadding;
     final height = mediaQuery.size.height;
 
-    await showModalBottomSheet<void>(
-      context: context,
-      isScrollControlled: true,
-      constraints: BoxConstraints(
-        // screen height - top height safearea
-        maxHeight: height - margin.top,
-      ),
-      clipBehavior: Clip.hardEdge,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(16),
+    if (widget.responsiveDialog) {
+      await showDialog<void>(
+        context: context,
+        builder: (_) {
+          return Dialog(
+            child: CountryCodePickerDialog(
+              favoriteCountriesCode: widget.favoriteCountriesCode,
+              onChanged: onChanged,
+              contryCodePickerTitle: widget.contryCodePickerTitle,
+              borderRadius: BorderRadius.circular(16),
+            ),
+          );
+        },
+      );
+    } else {
+      await showModalBottomSheet<void>(
+        context: context,
+        isScrollControlled: true,
+        constraints: BoxConstraints(
+          // screen height - top height safearea
+          maxHeight: height - margin.top,
         ),
-      ),
-      builder: (_) => CountryCodePickerDialog(
-        favoriteCountriesCode: widget.favoriteCountriesCode,
-        onChanged: onChanged,
-        contryCodePickerTitle: widget.contryCodePickerTitle,
-      ),
-    );
+        clipBehavior: Clip.hardEdge,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(16),
+          ),
+        ),
+        builder: (_) => CountryCodePickerDialog(
+          favoriteCountriesCode: widget.favoriteCountriesCode,
+          onChanged: onChanged,
+          contryCodePickerTitle: widget.contryCodePickerTitle,
+          borderRadius: const BorderRadius.vertical(
+            top: Radius.circular(20),
+          ),
+        ),
+      );
+    }
   }
 
   void onChanged(Country country) {

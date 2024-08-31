@@ -2,7 +2,7 @@ name: flutter_country_code_picker
 description: A Very Good Project created by Very Good CLI.
 homepage: https://github.com/farhanfadila1717/country_code_picker
 repository: https://github.com/farhanfadila1717/country_code_picker
-version: 0.0.1
+version: 0.0.2
 
 environment:
   sdk: ">=2.18.0 <3.0.0"
@@ -15,5 +15,5 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  mocktail: ^0.3.0
-  very_good_analysis: ">=3.1.0 <5.0.0"
+  mocktail: ^1.0.4
+  very_good_analysis: ">=3.1.0 <6.0.0"

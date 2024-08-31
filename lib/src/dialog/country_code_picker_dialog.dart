@@ -16,6 +16,7 @@ class CountryCodePickerDialog extends StatefulWidget {
     required this.favoriteCountriesCode,
     required this.onChanged,
     required this.contryCodePickerTitle,
+    required this.borderRadius,
   });
 
   /// The list of favorite country codes.
@@ -28,6 +29,9 @@ class CountryCodePickerDialog extends StatefulWidget {
 
   /// Localization for [CountryCodePickerDialog]
   final ContryCodePickerTitle contryCodePickerTitle;
+
+  /// The radius for the dialog's corners.
+  final BorderRadiusGeometry borderRadius;
 
   @override
   State<CountryCodePickerDialog> createState() =>
@@ -64,9 +68,7 @@ class _CountryCodePickerDialogState extends State<CountryCodePickerDialog> {
     return SizedBox.expand(
       child: ClipRRect(
         clipBehavior: Clip.hardEdge,
-        borderRadius: const BorderRadius.vertical(
-          top: Radius.circular(20),
-        ),
+        borderRadius: widget.borderRadius,
         child: ColoredBox(
           color: theme.scaffoldBackgroundColor,
           child: Column(

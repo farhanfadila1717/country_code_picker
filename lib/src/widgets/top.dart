@@ -6,7 +6,7 @@ import 'package:flutter_country_code_picker/src/utils/country_code_picker_title.
 /// [Top] section of dialog widget
 /// {@endtemplate}
 class Top extends StatefulWidget {
-  /// {@macto top}
+  /// {@macro top}
   const Top({
     super.key,
     required this.onSearch,
